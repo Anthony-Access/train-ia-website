@@ -4,74 +4,91 @@ import { BentoGrid, BentoItem } from "./BentoGrid";
 import { Workflow, Bot, GraduationCap, Database, Zap, BarChart3 } from "lucide-react";
 
 export default function SolutionsSection() {
-    return (
-        <section id="solutions" className="section">
-            <div className="container">
-                <div className="section-header">
-                    <h2 className="section-title">Nos Solutions <span className="text-gradient">Stratégiques</span></h2>
-                    <p className="section-subtitle">
-                        Une approche holistique pour transformer votre entreprise en machine de guerre digitale.
-                    </p>
-                </div>
+  return (
+    <section id="solutions" className="section">
+      <div className="container">
+        <div className="section-header">
+          <div className="section-badge">Nos Expertises</div>
+          <h2 className="section-title">Des solutions conçues pour <span className="text-gradient">l'impact business</span></h2>
+          <p className="section-subtitle">
+            Nous déployons des architectures robustes qui s'intègrent parfaitement à votre stack existante.
+          </p>
+        </div>
 
-                <BentoGrid>
-                    <BentoItem
-                        title="Automatisation Workflow"
-                        description="Orchestration complexe avec n8n et Make. Connectez vos outils (CRM, ERP, Marketing) pour supprimer les tâches manuelles."
-                        icon={<Workflow size={24} />}
-                        className="col-span-2"
-                        delay={0.1}
-                    />
-                    <BentoItem
-                        title="Agents IA Autonomes"
-                        description="Déploiement d'assistants GPT-4 personnalisés pour le support client, l'analyse de données ou la génération de contenu."
-                        icon={<Bot size={24} />}
-                        delay={0.2}
-                    />
-                    <BentoItem
-                        title="Formation & Coaching"
-                        description="Montée en compétence de vos équipes sur l'IA Générative et le No-Code. Devenez autonomes."
-                        icon={<GraduationCap size={24} />}
-                        delay={0.3}
-                    />
-                    <BentoItem
-                        title="Data Engineering"
-                        description="Pipelines de données robustes pour alimenter vos IA et tableaux de bord."
-                        icon={<Database size={24} />}
-                        className="col-span-2"
-                        delay={0.4}
-                    />
-                    <BentoItem
-                        title="Audit Flash"
-                        description="Analyse rapide de vos processus pour identifier les gisements de productivité immédiats."
-                        icon={<Zap size={24} />}
-                        delay={0.5}
-                    />
-                    <BentoItem
-                        title="Reporting Automatisé"
-                        description="Dashboards temps réel mis à jour automatiquement."
-                        icon={<BarChart3 size={24} />}
-                        delay={0.6}
-                    />
-                </BentoGrid>
-            </div>
+        <BentoGrid>
+          <BentoItem
+            title="Orchestration Workflow"
+            description="Automatisation de bout en bout avec n8n. Nous connectons vos silos de données pour créer des processus fluides et sans erreur."
+            icon={<Workflow size={20} />}
+            className="col-span-2"
+            delay={0.1}
+          />
+          <BentoItem
+            title="Agents IA Sur Mesure"
+            description="Assistants GPT-4 entraînés sur vos données pour le support, la vente ou l'analyse."
+            icon={<Bot size={20} />}
+            delay={0.2}
+          />
+          <BentoItem
+            title="Formation Équipes"
+            description="Programmes intensifs pour rendre vos équipes autonomes sur l'IA et le No-Code."
+            icon={<GraduationCap size={20} />}
+            delay={0.3}
+          />
+          <BentoItem
+            title="Architecture Data"
+            description="Pipelines ETL modernes pour alimenter vos IA en données propres et structurées."
+            icon={<Database size={20} />}
+            className="col-span-2"
+            delay={0.4}
+          />
+          <BentoItem
+            title="Audit de Performance"
+            description="Diagnostic complet de vos opérations pour identifier les goulots d'étranglement."
+            icon={<Zap size={20} />}
+            delay={0.5}
+          />
+          <BentoItem
+            title="Dashboards KPI"
+            description="Visualisation temps réel de vos métriques clés pour un pilotage précis."
+            icon={<BarChart3 size={20} />}
+            delay={0.6}
+          />
+        </BentoGrid>
+      </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .section-header {
           text-align: center;
-          max-width: 600px;
-          margin: 0 auto 4rem;
+          max-width: 700px;
+          margin: 0 auto 5rem;
+        }
+        
+        .section-badge {
+          display: inline-block;
+          padding: 0.25rem 0.75rem;
+          background: rgba(59, 130, 246, 0.1);
+          color: var(--primary);
+          font-size: 0.8rem;
+          font-weight: 600;
+          border-radius: var(--radius-full);
+          margin-bottom: 1rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
         }
         
         .section-title {
           font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 1rem;
+          font-weight: 800;
+          margin-bottom: 1.5rem;
+          line-height: 1.2;
+          color: var(--foreground);
         }
         
         .section-subtitle {
           color: var(--muted);
-          font-size: 1.1rem;
+          font-size: 1.125rem;
+          line-height: 1.6;
         }
         
         /* Custom grid spans for bento effect */
@@ -85,6 +102,6 @@ export default function SolutionsSection() {
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 }
