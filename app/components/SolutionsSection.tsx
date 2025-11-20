@@ -49,6 +49,7 @@ export default function SolutionsSection() {
             title="Fast Audit"
             description="Get a comprehensive analysis of your current processes in less than 48 hours."
             icon={<Zap size={24} />}
+            className="col-span-2"
             delay={0.5}
             gradient="linear-gradient(135deg, #8b5cf6, #d946ef)"
           />
