@@ -1,40 +1,40 @@
 "use client";
 
 export default function ServicesSection() {
-    const services = [
-        {
-            title: "Automatisation n8n",
-            description: "Connectez vos applications et automatisez vos tâches répétitives. Gagnez du temps et réduisez les erreurs.",
-            icon: "⚡"
-        },
-        {
-            title: "Formation IA Générative",
-            description: "Maîtrisez ChatGPT, Midjourney et les LLMs pour booster votre créativité et votre productivité.",
-            icon: "🤖"
-        },
-        {
-            title: "Consulting Sur Mesure",
-            description: "Audit de vos processus et stratégie d'implémentation de l'IA adaptée à votre métier.",
-            icon: "🎯"
-        }
-    ];
+  const services = [
+    {
+      title: "Automatisation n8n",
+      description: "Connectez vos applications et automatisez vos tâches répétitives. Gagnez du temps et réduisez les erreurs.",
+      icon: "⚡"
+    },
+    {
+      title: "Formation IA Générative",
+      description: "Maîtrisez ChatGPT, Midjourney et les LLMs pour booster votre créativité et votre productivité.",
+      icon: "🤖"
+    },
+    {
+      title: "Consulting Sur Mesure",
+      description: "Audit de vos processus et stratégie d'implémentation de l'IA adaptée à votre métier.",
+      icon: "🎯"
+    }
+  ];
 
-    return (
-        <section id="services" className="section services">
-            <div className="container">
-                <h2 className="section-title">Nos Services</h2>
-                <div className="services-grid">
-                    {services.map((service, index) => (
-                        <div key={index} className="glass-card service-card">
-                            <div className="service-icon">{service.icon}</div>
-                            <h3 className="service-title">{service.title}</h3>
-                            <p className="service-description">{service.description}</p>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <section id="services" className="section services">
+      <div className="container">
+        <h2 className="section-title">Nos Services</h2>
+        <div className="services-grid">
+          {services.map((service, index) => (
+            <div key={index} className="glass-panel service-card">
+              <div className="service-icon">{service.icon}</div>
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-description">{service.description}</p>
             </div>
+          ))}
+        </div>
+      </div>
 
-            <style jsx>{`
+      <style jsx>{`
         .section-title {
           text-align: center;
           font-size: 2.5rem;
@@ -44,7 +44,7 @@ export default function ServicesSection() {
         
         .services-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 2rem;
         }
         
@@ -53,6 +53,7 @@ export default function ServicesSection() {
           flex-direction: column;
           align-items: flex-start;
           height: 100%;
+          padding: 2rem;
         }
         
         .service-icon {
@@ -74,6 +75,6 @@ export default function ServicesSection() {
           line-height: 1.6;
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 }
