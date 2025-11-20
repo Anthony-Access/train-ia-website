@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { MouseEvent, ReactNode } from "react";
+import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
 interface BentoItemProps {
   title: string;
@@ -9,6 +9,7 @@ interface BentoItemProps {
   icon?: ReactNode;
   className?: string;
   delay?: number;
+  gradient?: string;
 }
 
 export function BentoGrid({ children }: { children: ReactNode }) {
@@ -19,108 +20,60 @@ export function BentoGrid({ children }: { children: ReactNode }) {
   );
 }
 
-export function BentoItem({ title, description, icon, className = "", delay = 0 }: BentoItemProps) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
-
+export function BentoItem({ title, description, icon, className = "", delay = 0, gradient = "linear-gradient(135deg, #9559D1, #ec4899)" }: BentoItemProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className={`bento-card group ${className}`}
-      onMouseMove={handleMouseMove}
+      className={`glass-panel bento-item ${className}`}
     >
-      <motion.div
-        className="spotlight"
-        style={{
-          background: useMotionTemplate`
-            radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(255, 255, 255, 0.1),
-              transparent 80%
-            )
-          `,
-        }}
-      />
-
       <div className="bento-content">
-        <div className="bento-header">
-          {icon && <div className="bento-icon">{icon}</div>}
-          <h3 className="bento-title">{title}</h3>
+        <div className="icon-wrapper" style={{ background: gradient }}>
+          {icon}
         </div>
+        <h3 className="bento-title">{title}</h3>
         <p className="bento-desc">{description}</p>
       </div>
 
       <style jsx>{`
-        .bento-card {
-          position: relative;
-          padding: 2rem;
-          background: rgba(255, 255, 255, 0.02);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: var(--radius-md);
-          overflow: hidden;
+        .bento-item {
+          padding: 2.5rem;
           display: flex;
           flex-direction: column;
           height: 100%;
-          transition: border-color 0.3s;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          background: rgba(255, 255, 255, 0.03);
         }
         
-        .bento-card:hover {
-          border-color: rgba(255, 255, 255, 0.15);
+        .bento-item:hover {
+          transform: translateY(-5px);
+          background: rgba(255, 255, 255, 0.05);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .spotlight {
-          pointer-events: none;
-          position: absolute;
-          inset: 0;
-          opacity: 0;
-          transition: opacity 0.3s;
-        }
-        
-        .bento-card:hover .spotlight {
-          opacity: 1;
-        }
-        
-        .bento-content {
-          position: relative;
-          z-index: 10;
-        }
-        
-        .bento-header {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          margin-bottom: 1rem;
-        }
-        
-        .bento-icon {
-          width: 40px;
-          height: 40px;
+        .icon-wrapper {
+          width: 48px;
+          height: 48px;
+          border-radius: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 8px;
           color: white;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
         .bento-title {
-          font-size: 1.1rem;
-          font-weight: 600;
+          font-size: 1.25rem;
+          font-weight: 700;
           color: white;
-          letter-spacing: -0.01em;
+          margin-bottom: 0.75rem;
         }
         
         .bento-desc {
-          font-size: 0.95rem;
+          font-size: 1rem;
           color: var(--muted);
           line-height: 1.6;
         }

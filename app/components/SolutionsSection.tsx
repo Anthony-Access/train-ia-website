@@ -8,73 +8,79 @@ export default function SolutionsSection() {
     <section id="solutions" className="section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Engineered for <br /><span className="text-gradient">Scale & Velocity</span></h2>
+          <h2 className="section-title">Everything you need to <br /><span className="text-gradient">Automate & Scale</span></h2>
           <p className="section-subtitle">
-            Our solutions are built on a foundation of modern engineering principles, designed to integrate seamlessly with your existing infrastructure.
+            A complete suite of tools to transform your operations. From simple workflows to complex autonomous agents.
           </p>
         </div>
 
         <BentoGrid>
           <BentoItem
-            title="Workflow Orchestration"
-            description="End-to-end automation using n8n. We connect data silos to create fluid, error-free processes."
-            icon={<Workflow size={20} />}
+            title="Workflow Automation"
+            description="Connect your favorite apps and automate repetitive tasks with n8n. No more manual data entry."
+            icon={<Workflow size={24} />}
             className="col-span-2"
             delay={0.1}
+            gradient="linear-gradient(135deg, #3b82f6, #8b5cf6)"
           />
           <BentoItem
-            title="Custom AI Agents"
-            description="GPT-4 assistants trained on your proprietary data for support, sales, or analysis."
-            icon={<Bot size={20} />}
+            title="AI Agents"
+            description="Deploy intelligent assistants that work 24/7 to handle customer support and sales."
+            icon={<Bot size={24} />}
             delay={0.2}
+            gradient="linear-gradient(135deg, #ec4899, #f43f5e)"
           />
           <BentoItem
-            title="Team Enablement"
-            description="Intensive programs to make your teams autonomous in AI and No-Code technologies."
-            icon={<GraduationCap size={20} />}
+            title="Team Training"
+            description="Empower your workforce with the skills to leverage AI tools effectively."
+            icon={<GraduationCap size={24} />}
             delay={0.3}
+            gradient="linear-gradient(135deg, #10b981, #3b82f6)"
           />
           <BentoItem
-            title="Data Architecture"
-            description="Modern ETL pipelines to fuel your AI with clean, structured, and reliable data."
-            icon={<Database size={20} />}
+            title="Data Pipeline"
+            description="Build robust data infrastructure to feed your AI models with clean, structured data."
+            icon={<Database size={24} />}
             className="col-span-2"
             delay={0.4}
+            gradient="linear-gradient(135deg, #f59e0b, #ef4444)"
           />
           <BentoItem
-            title="Performance Audit"
-            description="Comprehensive diagnostic of your operations to identify bottlenecks and opportunities."
-            icon={<Zap size={20} />}
+            title="Fast Audit"
+            description="Get a comprehensive analysis of your current processes in less than 48 hours."
+            icon={<Zap size={24} />}
             delay={0.5}
+            gradient="linear-gradient(135deg, #8b5cf6, #d946ef)"
           />
           <BentoItem
-            title="Real-time Analytics"
-            description="Live visualization of your key metrics for precise, data-driven piloting."
-            icon={<BarChart3 size={20} />}
+            title="Analytics"
+            description="Track the ROI of your automations with real-time dashboards."
+            icon={<BarChart3 size={24} />}
             delay={0.6}
+            gradient="linear-gradient(135deg, #06b6d4, #3b82f6)"
           />
         </BentoGrid>
       </div>
 
       <style jsx>{`
         .section-header {
-          margin-bottom: 5rem;
+          text-align: center;
+          max-width: 700px;
+          margin: 0 auto 5rem;
         }
         
         .section-title {
-          font-size: 3.5rem;
-          font-weight: 700;
+          font-size: 3rem;
+          font-weight: 800;
           margin-bottom: 1.5rem;
           line-height: 1.1;
-          letter-spacing: -0.03em;
           color: white;
         }
         
         .section-subtitle {
           color: var(--muted);
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           line-height: 1.6;
-          max-width: 600px;
         }
         
         /* Custom grid spans for bento effect */
