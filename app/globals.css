@@ -85,6 +85,7 @@ button {
 .section {
   padding: var(--spacing-xl) 0;
   position: relative;
+  overflow: hidden;
 }
 
 .text-gradient {
@@ -651,17 +652,28 @@ button {
 }
 
 .steps-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   margin-bottom: 5rem;
 }
 
 .step-card {
+  flex: 1 1 350px;
+  max-width: 450px;
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.step-detail {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: auto;
 }
 
 .step-card:hover {
@@ -781,11 +793,25 @@ button {
   display: flex;
   flex-direction: column;
   position: relative;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .pricing-card.featured {
   border: 1px solid var(--primary);
-  background: rgba(149, 89, 209, 0.05);
+  background: linear-gradient(145deg, rgba(149, 89, 209, 0.1), rgba(0, 0, 0, 0));
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-5px);
 }
 
 .card-badge {

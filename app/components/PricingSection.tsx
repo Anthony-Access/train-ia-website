@@ -23,7 +23,7 @@ export default function PricingSection() {
                         <div className="plan-price">1490€</div>
                         <p className="plan-desc">Investment sérieux. Audit complet de vos processus.</p>
 
-                        <ul className="plan-features">
+                        <ul className="plan-features flex-grow">
                             <li><Check size={16} className="check-icon" /> Audit complet méthode B.A.T.I.R.</li>
                             <li><Check size={16} className="check-icon" /> Architecture des automatisations</li>
                             <li><Check size={16} className="check-icon" /> Identification des gains potentiels</li>

@@ -52,7 +52,8 @@ export default function MethodologySection() {
                     </p>
                 </div>
 
-                <div className="steps-grid">
+                <div className="steps-grid relative">
+                    <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500/20 to-transparent -z-10 hidden md:block" />
                     {steps.map((step, index) => (
                         <motion.div
                             key={index}
