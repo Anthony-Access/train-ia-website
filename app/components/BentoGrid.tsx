@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { MouseEvent, ReactNode } from "react";
 
 interface BentoItemProps {
   title: string;
@@ -20,14 +20,37 @@ export function BentoGrid({ children }: { children: ReactNode }) {
 }
 
 export function BentoItem({ title, description, icon, className = "", delay = 0 }: BentoItemProps) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
-      className={`glass-panel bento-item ${className}`}
+      className={`bento-card group ${className}`}
+      onMouseMove={handleMouseMove}
     >
+      <motion.div
+        className="spotlight"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              650px circle at ${mouseX}px ${mouseY}px,
+              rgba(255, 255, 255, 0.1),
+              transparent 80%
+            )
+          `,
+        }}
+      />
+
       <div className="bento-content">
         <div className="bento-header">
           {icon && <div className="bento-icon">{icon}</div>}
@@ -37,21 +60,38 @@ export function BentoItem({ title, description, icon, className = "", delay = 0 
       </div>
 
       <style jsx>{`
-        .bento-item {
+        .bento-card {
+          position: relative;
           padding: 2rem;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: var(--radius-md);
+          overflow: hidden;
           display: flex;
           flex-direction: column;
           height: 100%;
-          transition: all 0.3s ease;
-          background: rgba(30, 41, 59, 0.4); /* Lighter base */
-          border: 1px solid rgba(148, 163, 184, 0.1);
+          transition: border-color 0.3s;
         }
         
-        .bento-item:hover {
-          border-color: var(--primary);
-          background: rgba(30, 41, 59, 0.6);
-          transform: translateY(-4px);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .bento-card:hover {
+          border-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .spotlight {
+          pointer-events: none;
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        
+        .bento-card:hover .spotlight {
+          opacity: 1;
+        }
+        
+        .bento-content {
+          position: relative;
+          z-index: 10;
         }
         
         .bento-header {
@@ -67,16 +107,16 @@ export function BentoItem({ title, description, icon, className = "", delay = 0 
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(59, 130, 246, 0.1);
-          color: var(--primary-light);
+          background: rgba(255, 255, 255, 0.05);
           border-radius: 8px;
+          color: white;
         }
         
         .bento-title {
           font-size: 1.1rem;
           font-weight: 600;
-          color: var(--foreground);
-          line-height: 1.3;
+          color: white;
+          letter-spacing: -0.01em;
         }
         
         .bento-desc {

@@ -1,152 +1,123 @@
 "use client";
 
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container header-content">
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="header-wrapper"
+    >
+      <div className={`header-pill ${scrolled ? 'scrolled' : ''}`}>
         <Link href="/" className="logo">
-          Train<span className="text-gradient">-IA</span>
+          <div className="logo-icon"></div>
+          Train-IA
         </Link>
 
-        <nav className="nav desktop-nav">
+        <nav className="nav">
           <Link href="#solutions" className="nav-link">Solutions</Link>
-          <Link href="#methodologie" className="nav-link">Méthodologie</Link>
-          <Link href="#ressources" className="nav-link">Ressources</Link>
-          <Link href="#about" className="nav-link">À propos</Link>
+          <Link href="#methodologie" className="nav-link">Method</Link>
+          <Link href="#ressources" className="nav-link">Resources</Link>
         </nav>
 
-        <div className="header-actions">
-          <Link href="#contact" className="btn btn-primary">
-            Réserver un audit
-          </Link>
-          <button
-            className="mobile-toggle"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
+        <Link href="#contact" className="cta-link">
+          Talk to Expert
+        </Link>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="mobile-menu">
-          <nav className="mobile-nav">
-            <Link href="#solutions" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Solutions</Link>
-            <Link href="#methodologie" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Méthodologie</Link>
-            <Link href="#ressources" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>Ressources</Link>
-            <Link href="#about" className="mobile-link" onClick={() => setIsMobileMenuOpen(false)}>À propos</Link>
-          </nav>
-        </div>
-      )}
-
       <style jsx>{`
-        .header {
+        .header-wrapper {
           position: fixed;
-          top: 0;
+          top: 2rem;
           left: 0;
           right: 0;
+          display: flex;
+          justify-content: center;
           z-index: 100;
-          padding: 1.5rem 0;
+          padding: 0 1rem;
+        }
+        
+        .header-pill {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+          padding: 0.75rem 1.5rem;
+          background: rgba(255, 255, 255, 0.03);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 100px;
           transition: all 0.3s ease;
         }
         
-        .header.scrolled {
-          padding: 1rem 0;
-          background: rgba(2, 0, 4, 0.8);
-          backdrop-filter: blur(12px);
-          border-bottom: 1px solid var(--border);
-        }
-        
-        .header-content {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+        .header-pill.scrolled {
+          background: rgba(0, 2, 18, 0.8);
+          border-color: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
         .logo {
-          font-size: 1.5rem;
-          font-weight: 700;
-          letter-spacing: -0.05em;
-          z-index: 101;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-weight: 600;
+          font-size: 0.95rem;
+          letter-spacing: -0.02em;
+        }
+        
+        .logo-icon {
+          width: 16px;
+          height: 16px;
+          background: white;
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
         
         .nav {
           display: flex;
-          gap: 2.5rem;
-        }
-        
-        .nav-link {
-          font-size: 0.95rem;
-          color: var(--muted);
-          transition: color 0.2s;
-          font-weight: 500;
-        }
-        
-        .nav-link:hover {
-          color: var(--foreground);
-        }
-        
-        .header-actions {
-          display: flex;
-          align-items: center;
-          gap: 1rem;
-          z-index: 101;
-        }
-        
-        .mobile-toggle {
-          display: none;
-          color: var(--foreground);
-        }
-        
-        .mobile-menu {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: var(--background);
-          padding-top: 6rem;
-          z-index: 99;
-        }
-        
-        .mobile-nav {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
           gap: 2rem;
         }
         
-        .mobile-link {
-          font-size: 1.5rem;
-          font-weight: 600;
+        .nav-link {
+          font-size: 0.85rem;
+          color: var(--muted);
+          transition: color 0.2s;
+        }
+        
+        .nav-link:hover {
+          color: white;
+        }
+        
+        .cta-link {
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: white;
+          padding: 0.5rem 1rem;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 100px;
+          transition: background 0.2s;
+        }
+        
+        .cta-link:hover {
+          background: rgba(255, 255, 255, 0.2);
         }
         
         @media (max-width: 768px) {
-          .desktop-nav {
-            display: none;
-          }
-          
-          .mobile-toggle {
-            display: block;
-          }
+          .nav { display: none; }
+          .header-pill { gap: 1rem; width: 100%; justify-content: space-between; }
         }
       `}</style>
-    </header>
+    </motion.header>
   );
 }
