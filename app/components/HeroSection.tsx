@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function HeroSection() {
   return (
     <section className="hero">
       <div className="container hero-container">
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="hero-content flex flex-col gap-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hero-content"
         >
           <div className="hero-badge">
             <span className="pulse-dot"></span>
@@ -27,10 +28,10 @@ export default function HeroSection() {
 
           <div className="hero-actions">
             <a href="#contact" className="btn btn-primary">
-              Démarrer maintenant
+              Démarrer maintenant <ArrowRight size={18} />
             </a>
             <a href="#methodologie" className="btn btn-secondary">
-              Découvrir la méthode
+              <Play size={18} fill="currentColor" /> Découvrir la méthode
             </a>
           </div>
 
@@ -38,26 +39,24 @@ export default function HeroSection() {
             <div className="trust-stats">
               <div className="stat-item">
                 <span className="stat-value">15+</span>
-                <span className="stat-label">Clients accompagnés</span>
+                <span className="stat-label">Clients</span>
               </div>
-              <div className="stat-divider"></div>
               <div className="stat-item">
                 <span className="stat-value">10h+</span>
-                <span className="stat-label">Économisées/semaine</span>
+                <span className="stat-label">Gain/semaine</span>
               </div>
-              <div className="stat-divider"></div>
               <div className="stat-item">
                 <span className="stat-value">100%</span>
-                <span className="stat-label">Satisfaction client</span>
+                <span className="stat-label">Satisfaction</span>
               </div>
             </div>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="hero-visual"
         >
           <div className="interface-card">
@@ -70,46 +69,17 @@ export default function HeroSection() {
               <div className="address-bar">train-ia.com/dashboard</div>
             </div>
             <div className="interface-body">
-              <div className="sidebar">
-                <div className="sidebar-item active"></div>
-                <div className="sidebar-item"></div>
-                <div className="sidebar-item"></div>
-              </div>
-              <div className="main-area">
-                <div className="chat-interface">
-                  <div className="message bot w-75">
-                    <div className="message-line w-60"></div>
-                    <div className="message-line w-50"></div>
-                  </div>
-                  <div className="message user w-50">
-                    <div className="message-line w-75"></div>
-                  </div>
-                  <div className="message bot w-60">
-                    <div className="message-line w-75"></div>
-                    <div className="message-line w-50"></div>
-                  </div>
-                  <div className="input-area">
-                    <div className="input-placeholder"></div>
-                    <div className="send-btn"></div>
-                  </div>
-                </div>
-                <div className="agent-preview">
-                  <div className="agent-avatar">
-                    <div className="avatar-pulse"></div>
-                  </div>
-                  <div className="agent-status">
-                    <div className="status-dot"></div>
-                    Agent Actif
+              {/* Abstract Dashboard UI */}
+              <div style={{ display: 'flex', gap: '1rem', height: '100%' }}>
+                <div style={{ width: '60px', background: '#374151', borderRadius: '8px' }}></div>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div style={{ height: '100px', background: '#374151', borderRadius: '8px' }}></div>
+                  <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <div style={{ background: '#374151', borderRadius: '8px' }}></div>
+                    <div style={{ background: '#374151', borderRadius: '8px' }}></div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="float-badge badge-1">
-              🚀 ROI en 45 jours
-            </div>
-            <div className="float-badge badge-2">
-              ⚡ -10h de travail/semaine
             </div>
           </div>
         </motion.div>

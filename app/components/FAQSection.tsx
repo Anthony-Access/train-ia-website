@@ -33,16 +33,19 @@ export default function FAQSection() {
     return (
         <section id="faq" className="section faq">
             <div className="container">
-                <h2 className="section-title text-center">Questions fréquentes</h2>
+                <h2 className="section-title text-center" style={{ marginBottom: '3rem' }}>Questions fréquentes</h2>
 
                 <div className="faq-grid">
                     {faqs.map((faq, index) => (
-                        <div key={index} className="glass-panel faq-item" onClick={() => setOpenIndex(openIndex === index ? null : index)}>
-                            <div className="faq-question">
-                                <h3>{faq.question}</h3>
-                                <div className="faq-icon">
+                        <div key={index} className="faq-item">
+                            <div
+                                className="faq-question"
+                                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                            >
+                                <span>{faq.question}</span>
+                                <span style={{ color: openIndex === index ? 'var(--primary)' : 'var(--muted)' }}>
                                     {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
-                                </div>
+                                </span>
                             </div>
                             <AnimatePresence>
                                 {openIndex === index && (
@@ -50,9 +53,11 @@ export default function FAQSection() {
                                         initial={{ height: 0, opacity: 0 }}
                                         animate={{ height: "auto", opacity: 1 }}
                                         exit={{ height: 0, opacity: 0 }}
-                                        className="faq-answer"
+                                        style={{ overflow: 'hidden' }}
                                     >
-                                        <p>{faq.answer}</p>
+                                        <div className="faq-answer">
+                                            {faq.answer}
+                                        </div>
                                     </motion.div>
                                 )}
                             </AnimatePresence>
