@@ -63,38 +63,7 @@ export default function SolutionsSection() {
         </BentoGrid>
       </div>
 
-      <style jsx>{`
-        .section-header {
-          text-align: center;
-          max-width: 700px;
-          margin: 0 auto 5rem;
-        }
-        
-        .section-title {
-          font-size: 3rem;
-          font-weight: 800;
-          margin-bottom: 1.5rem;
-          line-height: 1.1;
-          color: white;
-        }
-        
-        .section-subtitle {
-          color: var(--muted);
-          font-size: 1.125rem;
-          line-height: 1.6;
-        }
-        
-        /* Custom grid spans for bento effect */
-        :global(.col-span-2) {
-          grid-column: span 1;
-        }
-        
-        @media (min-width: 768px) {
-          :global(.col-span-2) {
-            grid-column: span 2;
-          }
-        }
-      `}</style>
+
     </section>
   );
 }

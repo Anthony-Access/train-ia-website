@@ -33,48 +33,6 @@ export default function ServicesSection() {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .section-title {
-          text-align: center;
-          font-size: 2.5rem;
-          font-weight: 700;
-          margin-bottom: 3rem;
-        }
-        
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 2rem;
-        }
-        
-        .service-card {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          height: 100%;
-          padding: 2rem;
-        }
-        
-        .service-icon {
-          font-size: 3rem;
-          margin-bottom: 1.5rem;
-          background: var(--gradient-main);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-        
-        .service-title {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-        }
-        
-        .service-description {
-          color: rgba(255, 255, 255, 0.7);
-          line-height: 1.6;
-        }
-      `}</style>
     </section>
   );
 }

@@ -37,54 +37,7 @@ export function BentoItem({ title, description, icon, className = "", delay = 0,
         <p className="bento-desc">{description}</p>
       </div>
 
-      <style jsx>{`
-        .bento-item {
-          padding: 2rem;
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          background: rgba(255, 255, 255, 0.03);
-          gap: 1rem;
-        }
-        
-        .bento-item:hover {
-          transform: translateY(-5px);
-          background: rgba(255, 255, 255, 0.05);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .icon-wrapper {
-          width: 48px;
-          height: 48px;
-          border-radius: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          margin-bottom: 0.5rem;
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .bento-title {
-          font-size: 1.25rem;
-          font-weight: 700;
-          color: white;
-          margin-bottom: 0.25rem;
-        }
-        
-        .bento-desc {
-          font-size: 1rem;
-          color: var(--muted);
-          line-height: 1.6;
-        }
 
-        @media (min-width: 768px) {
-          .bento-item {
-            padding: 2.5rem;
-          }
-        }
-      `}</style>
     </motion.div>
   );
 }
