@@ -3,19 +3,19 @@
 export default function ServicesSection() {
   const services = [
     {
-      title: "Automatisation n8n",
-      description: "Connectez vos applications et automatisez vos tâches répétitives. Gagnez du temps et réduisez les erreurs.",
+      title: "Audit & Diagnostic",
+      description: "Identifiez vos opportunités d'automatisation en 1 semaine. Analyse complète de vos flux et roadmap détaillée.",
+      icon: "🔍"
+    },
+    {
+      title: "Implémentation",
+      description: "Déploiement de workflows sur mesure et intégration IA. Nous construisons votre système d'exploitation intelligent.",
       icon: "⚡"
     },
     {
-      title: "Formation IA Générative",
-      description: "Maîtrisez ChatGPT, Midjourney et les LLMs pour booster votre créativité et votre productivité.",
-      icon: "🤖"
-    },
-    {
-      title: "Consulting Sur Mesure",
-      description: "Audit de vos processus et stratégie d'implémentation de l'IA adaptée à votre métier.",
-      icon: "🎯"
+      title: "Formation & Autonomie",
+      description: "Rendez vos équipes autonomes sur l'IA en 2 jours. Maîtrisez les outils qui changent la donne.",
+      icon: "🎓"
     }
   ];
 

@@ -1,8 +1,9 @@
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
-import SolutionsSection from "./components/SolutionsSection";
-import ResourcesSection from "./components/ResourcesSection";
-import AboutSection from "./components/AboutSection";
+import MethodologySection from "./components/MethodologySection";
+import ServicesSection from "./components/ServicesSection";
+import PricingSection from "./components/PricingSection";
+import FAQSection from "./components/FAQSection";
 import Footer from "./components/Footer";
 
 export default function Home() {
@@ -10,9 +11,10 @@ export default function Home() {
     <main>
       <Header />
       <HeroSection />
-      <SolutionsSection />
-      <ResourcesSection />
-      <AboutSection />
+      <MethodologySection />
+      <ServicesSection />
+      <PricingSection />
+      <FAQSection />
       <Footer />
     </main>
   );

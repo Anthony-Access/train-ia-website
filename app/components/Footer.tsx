@@ -26,18 +26,18 @@ export default function Footer() {
           <div className="footer-links">
             <div className="link-group">
               <h4>Solutions</h4>
-              <Link href="/#solutions">Automatisation</Link>
-              <Link href="/#solutions">Agents IA</Link>
-              <Link href="/#services">Consulting</Link>
+              <Link href="/#methodologie">Méthode B.A.T.I.R.</Link>
+              <Link href="/#services">Audit & Diagnostic</Link>
+              <Link href="/#services">Implémentation</Link>
               <Link href="/#services">Formation</Link>
             </div>
 
             <div className="link-group">
               <h4>Entreprise</h4>
               <Link href="/#about">À propos</Link>
-              <Link href="#">Carrières</Link>
-              <Link href="#">Partenaires</Link>
-              <Link href="mailto:contact@train-ia.com">Contact</Link>
+              <Link href="/#pricing">Tarifs</Link>
+              <Link href="/#faq">FAQ</Link>
+              <Link href="mailto:anthony@train-ia.fr">Contact</Link>
             </div>
 
             <div className="link-group">
