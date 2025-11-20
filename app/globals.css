@@ -144,12 +144,13 @@ button {
 .grid-bento {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
   .grid-bento {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(280px, auto);
+    gap: 2.5rem;
   }
 }
