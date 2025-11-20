@@ -1,31 +1,42 @@
 :root {
-  /* Colors */
-  --background: #030014; /* Deep space blue/black */
+  /* Enterprise Palette */
+  --background: #020204;
+  /* Deeper black for premium feel */
   --foreground: #ffffff;
-  --primary: #7c3aed; /* Violet */
-  --primary-glow: rgba(124, 58, 237, 0.5);
-  --secondary: #0ea5e9; /* Sky Blue */
-  --accent: #f472b6; /* Pink */
-  
+  --muted: #a1a1aa;
+
+  /* Brand Colors - More sophisticated */
+  --primary: #6d28d9;
+  /* Deep Violet */
+  --primary-light: #8b5cf6;
+  --secondary: #0369a1;
+  /* Deep Sky */
+  --accent: #db2777;
+  /* Deep Pink */
+
+  /* Surface Colors */
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.08);
+
   /* Gradients */
-  --gradient-main: linear-gradient(135deg, var(--primary), var(--secondary));
-  --gradient-dark: linear-gradient(to bottom, #030014, #0f0c29);
-  
-  /* Spacing */
+  --gradient-main: linear-gradient(135deg, #8b5cf6, #0ea5e9);
+  --gradient-glow: radial-gradient(circle at center, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+
+  /* Spacing & Layout */
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
   --spacing-xl: 8rem;
-  
-  /* Border Radius */
+
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
-  --radius-lg: 2rem;
-  
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition-medium: 0.4s ease;
+  --radius-lg: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * {
@@ -34,14 +45,16 @@
   margin: 0;
 }
 
-html,
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Inter', sans-serif;
-  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -56,62 +69,16 @@ button {
   font-family: inherit;
 }
 
-/* Utilities */
+/* Utility Classes */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 var(--spacing-md);
 }
 
 .section {
-  padding: var(--spacing-lg) 0;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 600;
-  transition: var(--transition-fast);
-}
-
-.btn-primary {
-  background: var(--gradient-main);
-  color: white;
-  box-shadow: 0 0 20px var(--primary-glow);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 30px var(--primary-glow);
-}
-
-.btn-outline {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-}
-
-.btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: white;
-}
-
-.glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-md);
-  padding: var(--spacing-md);
-  transition: var(--transition-medium);
-}
-
-.glass-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
+  padding: var(--spacing-xl) 0;
+  position: relative;
 }
 
 .text-gradient {
@@ -119,4 +86,59 @@ button {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.glass-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  border-radius: var(--radius-md);
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Grid Utilities */
+.grid-bento {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-bento {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+  }
 }
